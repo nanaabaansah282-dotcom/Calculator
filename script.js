@@ -20,7 +20,6 @@ function clearAll() {
 }
 
 function appendDigit(value) {
-  // typing after a result starts a fresh number
   if (justCalculated) {
     currentInput = "";
     justCalculated = false;
@@ -34,13 +33,13 @@ function appendDigit(value) {
 }
 
 function chooseOperator(op) {
-  if (currentInput === "" && previousInput === "") return; // nothing to operate on
+  if (currentInput === "" && previousInput === "") return; 
   if (currentInput === "") {
-    operator = op; // changed your mind: "5 + ×" swaps the operator
+    operator = op; 
     return;
   }
-  if (previousInput !== "" && operator !== "") calculate(); // chaining: 5 + 3 + ...
-  if (currentInput === "") return; // calculate() hit divide-by-zero and reset
+  if (previousInput !== "" && operator !== "") calculate(); 
+  if (currentInput === "") return; 
   previousInput = currentInput;
   currentInput = "";
   operator = op;
@@ -80,7 +79,7 @@ function calculate() {
   updateDisplay();
 }
 
-// --- Step 3: one listener for the whole grid ---
+
 keys.addEventListener("click", function (event) {
   const button = event.target.closest("button");
   if (!button) return;
